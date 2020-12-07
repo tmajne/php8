@@ -1,0 +1,16 @@
+{
+    "name": "pehape/php8",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "TT",
+            "email": "ttomczyk@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Php8\\": "src/"
+        }
+    }
+}
