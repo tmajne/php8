@@ -6,11 +6,10 @@ namespace Php8\Attribute;
 
 use Attribute;
 
-#[\Attribute]
-//#[Attribute(Attribute::IS_REPEATABLE)]
-class Deprecated{}
+//#[Attribute]
+//class Deprecated{}
 
-/*
+
 #[Attribute(Attribute::IS_REPEATABLE|Attribute::TARGET_ALL)]
 class Deprecated
 {
@@ -18,4 +17,3 @@ class Deprecated
         private string $message = '!!! Deprecated !!!'
     ) {}
 }
-*/

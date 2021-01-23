@@ -1,8 +1,10 @@
 <?php
 
+// MATCH
+
 // switch na sterydach ;)
 
-$httpStatusCode = 200;
+//$httpStatusCode = 400;
 //$httpStatusCode = '200';
 $httpStatusCode = 20011;
 
@@ -29,8 +31,8 @@ $matchMessage = match ($httpStatusCode) {
     default => 'unknown status code',
 };
 
-var_dump($switchMessage);
-var_dump($matchMessage);
+//var_dump($switchMessage);
+//var_dump($matchMessage);
 
 // właściwości
 /*
@@ -50,6 +52,8 @@ $matchMessage = match ($count) {
     20 => 'twenty'
 };
 
+//var_dump($matchMessage);
+
 /*
 $count = 10;
 $matchMessage = match ($count) {
@@ -61,9 +65,10 @@ $matchMessage = match ($count) {
 };
 */
 
+$httpStatusCode = 500;
 match ($httpStatusCode) {
     200, 300 => 'ok',
     400 => 'not found',
-    500 =>  throw new Exception('server error'),
+    500 => throw new Exception('server error'),
     default => 'unknown status code',
 };

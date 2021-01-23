@@ -1,11 +1,14 @@
 <?php
 
+// NON CAPTURING CATCHES
+
 // PHP <= 7.4
 try {
     // do something
     throw new InvalidArgumentException('Wrong argument');
 } catch (InvalidArgumentException $exception) {
     var_dump("Some argument is wrong");
+    //var_dump($exception->getMessage());
 }
 
 // PHP >= 8.0
@@ -19,4 +22,5 @@ try {
     throw new InvalidArgumentException('Wrong argument');
 } catch (InvalidArgumentException) {
     var_dump("Some argument is wrong");
+    //return "something went wront";
 }

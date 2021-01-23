@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Php8\Attribute\Deprecated;
 
-include_once "../vendor/autoload.php";
+include_once __DIR__."/../vendor/autoload.php";
 
 // Attributes
 
@@ -16,12 +16,12 @@ include_once "../vendor/autoload.php";
  * Składnia jest mocno wzorowana na składni z języka Rust
  *
  * Przykłady adnotacji są na przykład w Symfony (doctrine mapping), funkcjonalność realizowana za pomocą notacji Docblock
- * W wersji Symfony 5.2 już możemy zamiast dotychczasowych adnotacji zastąpić jee natywne wspieranymi przez PHP argumentami
+ * W wersji Symfony 5.2 już możemy zamiast dotychczasowych adnotacji zastąpić je natywne wspieranymi przez PHP atryburami
  *
  * Możemy używać z:
  * klasami, metodami, funkcjami, parametrami, właściwościami, stałymi w klasach
  *
- * Za pomocą refleksji (Reflection API) możemy sprawdzać/odczytywać atrybuty podczas wykonywania programowania (runtime)
+ * Za pomocą refleksji (Reflection API) możemy sprawdzać/odczytywać atrybuty podczas wykonywania programu (runtime)
  * W związku z czym atrybuty można rozpatrywać jako konfigurację osadzoną bezpośrednio w kodzie
  *
  * Atrybut tworzymy poprzez stworzenie klasy i oznaczenie jej jako atrybut.
@@ -36,7 +36,7 @@ include_once "../vendor/autoload.php";
 #[Deprecated]
 function oldFunction() {}
 
-class OldClass
+class ExampleClass
 {
     //#[Deprecated]
     //#[Deprecated('Method is old')]
@@ -57,14 +57,15 @@ class OldClass
     }
 }
 
-$obj = new OldClass();
-$obj->oldMethod();
+$obj = new ExampleClass();
+//$obj->oldMethod();
 
 
 function dumpAttributes($reflection) {
     $attributes = $reflection->getAttributes();
 
     foreach ($attributes as $attribute) {
+        echo "=====\n";
         var_dump($attribute->getName());
         var_dump($attribute->getArguments());
         var_dump($attribute->newInstance());
@@ -72,14 +73,14 @@ function dumpAttributes($reflection) {
 }
 
 //dumpAttributes(new ReflectionFunction('oldFunction'));
-//dumpAttributes(new ReflectionClass(OldClass::class));
-dumpAttributes(new ReflectionMethod(OldClass::class, 'oldMethod'));
+//dumpAttributes(new ReflectionClass(ExampleClass::class));
+//dumpAttributes(new ReflectionMethod(ExampleClass::class, 'oldMethod'));
 
 /**
- * Potencjalne zastosowania
+ * Potencjalne zastosowania:
  * Przy tworzeniu własnych frameworków :D
  * Zastępowanie adnotacji opartych na docBlockach na rozwiązanie oparte na atrybutach
- * Tam gzie wcześniej był sens używania adnotacji, czyli przy implementacji, np:
+ * Tam gdzie wcześniej był sens używania adnotacji, czyli przy implementacji, np:
  * - routing'u
  * - wszelakich mappingów
  * - systemów uprawnień

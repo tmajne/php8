@@ -9,8 +9,8 @@ include_once "../vendor/autoload.php";
 
 class Controller
 {
-    //#[\Php8\Attribute\Route]
     #[Route(path: '/test/example')]
+    #[Allow(role: 'admin')]
     public function testAction(
         #[GreaterThenZero] int $resourceId
     ): string {

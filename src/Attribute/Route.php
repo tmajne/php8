@@ -11,7 +11,6 @@ namespace Php8\Attribute;
 
 use Attribute;
 
-//#[Attribute]
 #[Attribute(Attribute::TARGET_METHOD|Attribute::TARGET_FUNCTION)]
 class Route
 {
